@@ -13,11 +13,11 @@ Pod::Spec.new do |s|
   s.summary          = "CMSwitchView is a cool customizable switch view and with a pan gesture on it."
   s.description      = "You can customize for now the background color when selected or not. The border width and color.
                         The width/height of the dot. If you want rounded or not."
-  s.homepage         = "https://github.com/Mycose/CMSwitchView"
+  s.homepage         = "https://github.com/3nderapp/CMSwitchView"
   # s.screenshots     = "www.example.com/screenshots_1", "www.example.com/screenshots_2"
   s.license          = 'MIT'
   s.author           = { "Mycose" => "morissard@gmail.com" }
-  s.source           = { :git => "https://github.com/Mycose/CMSwitchView.git", :tag => s.version.to_s }
+  s.source           = { :git => "https://github.com/3nderapp/CMSwitchView", :tag => s.version.to_s }
   # s.social_media_url = 'https://twitter.com/<TWITTER_USERNAME>'
 
   s.platform     = :ios, '7.0'
