@@ -137,10 +137,25 @@
 
 - (void)commonInit
 {
-    _switchView = [[UIView alloc] initWithFrame:CGRectMake(0.0f, 0.0f, [self width], [self height])];
+    self.rounded                = YES;
+    self.borderWidth            = 1.f;
+    self.borderColor            = [UIColor whiteColor];
+    self.color                  = [UIColor clearColor];
+    self.tintColor              = [UIColor clearColor];
+    self.dotWeight              = 23.0f;
+    self.dotColor               = [UIColor whiteColor];
+    self.dotBorderWidth         = .0f;
+    self.dotBorderColor         = [UIColor clearColor];
+    self.animDuration           = 0.6;
+    self.selectedBorderColor    = self.borderColor;
+    self.selectedDotColor       = self.dotColor;
+    self.selectedDotBorderColor = self.dotBorderColor;
+    self.layer.masksToBounds    = NO;
+    
+    _switchView = [[UIView alloc] initWithFrame:CGRectZero];
     [self addSubview:_switchView];
     
-    _dotView = [[UIView alloc] initWithFrame:CGRectMake(0.0f, 0.0f, _dotWeight, _dotWeight)];
+    _dotView = [[UIView alloc] initWithFrame:CGRectZero];
     [_dotView setBackgroundColor:self.dotColor];
     [_switchView addSubview:self.dotView];
     
@@ -150,21 +165,14 @@
     UIPanGestureRecognizer* pan = [[UIPanGestureRecognizer alloc] initWithTarget:self action:@selector(panGestureDetected:)];
     pan.delegate = self;
     [_switchView addGestureRecognizer:pan];
+}
+
+- (void)layoutSubviews
+{
+    [super layoutSubviews];
     
-    self.rounded                = YES;
-    self.borderWidth            = 1.f;
-    self.borderColor            = [UIColor whiteColor];
-    self.color                  = [UIColor clearColor];
-    self.tintColor              = [UIColor clearColor];
-    self.dotWeight              = self.frame.size.height - 10.f;
-    self.dotColor               = [UIColor whiteColor];
-    self.dotBorderWidth         = .0f;
-    self.dotBorderColor         = [UIColor clearColor];
-    self.animDuration           = 0.6;
-    self.selectedBorderColor    = self.borderColor;
-    self.selectedDotColor       = self.dotColor;
-    self.selectedDotBorderColor = self.dotBorderColor;
-    self.layer.masksToBounds    = NO;
+    _switchView.frame = CGRectMake(0.0f, 0.0f, self.frame.size.width, self.frame.size.height);
+    self.dotWeight = _dotWeight;
 }
 
 #pragma mark - Gesture
